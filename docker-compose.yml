@@ -2,7 +2,7 @@
 
 services:
   webapp:
-    image: trungle1012/demo_cicd:latest
+    image: trungle1012/democicd:latest
     container_name: democicd
     ports:
       - "8080:80" # ánh xạ cổng
@@ -12,7 +12,7 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower_democicd
+    container_name: watchtowerdemocicd
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --cleanup --interval 60

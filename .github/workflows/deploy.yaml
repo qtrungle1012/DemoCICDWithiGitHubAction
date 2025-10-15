@@ -25,5 +25,5 @@ jobs:
 
       - name: 📦 Build & Push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/demo_cicd:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/demo_cicd:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/democicd:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/democicd:latest
