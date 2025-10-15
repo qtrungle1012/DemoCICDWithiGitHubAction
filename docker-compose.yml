@@ -9,6 +9,7 @@ services:
     restart: always
     environment:
       - ASPNETCORE_URLS=http://+:80 # Rất quan trọng để giao diện hiển thị
+      - ASPNETCORE_ENVIRONMENT=Development
 
   watchtower:
     image: containrrr/watchtower
