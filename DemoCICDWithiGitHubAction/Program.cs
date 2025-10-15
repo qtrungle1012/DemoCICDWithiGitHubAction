@@ -22,6 +22,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Urls.Add("http://0.0.0.0:80"); // su dung khi push len docker image
+// su dung khi push len docker image
+//app.Urls.Add("http://0.0.0.0:80");
 
 app.Run();
