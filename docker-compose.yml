@@ -1,0 +1,19 @@
+﻿version: '3.9'
+
+services:
+  webapp:
+    image: trungle1012/demo_cicd:latest
+    container_name: democicd
+    ports:
+      - "8080:80" # ánh xạ cổng
+    restart: always
+    environment:
+      - ASPNETCORE_URLS=http://+:80 # Rất quan trọng để giao diện hiển thị
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower_democicd
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup --interval 60
+    restart: always

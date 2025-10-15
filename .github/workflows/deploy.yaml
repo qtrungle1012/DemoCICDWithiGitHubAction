@@ -1,0 +1,29 @@
+﻿name: CI/CD ASP.NET Core + Docker
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🛠️ Build và test
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet test
+
+      - name: 🔐 Login DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: 📦 Build & Push Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/demo_cicd:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/demo_cicd:latest
